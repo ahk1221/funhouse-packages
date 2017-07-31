@@ -1,0 +1,11 @@
+{
+  "name": "radio",
+  "version": "1.0.0",
+  "main": "main.js",
+
+  "author": "AHK1221",
+  "license": "MIT",
+  "websites": [
+      "stream.radioreklama.bg"
+  ]
+}

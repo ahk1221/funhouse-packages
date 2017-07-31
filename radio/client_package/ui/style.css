@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'ticking_timebomb_bbregular';
+    src: url('tickingtimebombbb-webfont.woff2') format('woff2'),
+         url('tickingtimebombbb-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+div {
+    transition: opacity 200ms linear;
+}
+
+.hidden {
+    opacity: 1 !important;
+}
+
+#radio-display {
+    font-family: "ticking_timebomb_bbregular";
+    color: red;
+    font-size: 30px;
+    position: absolute;
+    top: 65px;
+    left: 510px;
+}
