@@ -1,0 +1,11 @@
+{
+  "name": "admin-commands",
+  "version": "1.0.0",
+  "main": "main.js",
+
+  "author": "AHK1221",
+  "license": "MIT",
+  "jcmp_dependencies" : [
+    "command-manager"
+  ]
+}
