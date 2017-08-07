@@ -5,6 +5,10 @@ ui.position = new Vector2(0, 320);
 ui.autoResize = true;
 ui.BringToFront();
 
+jcmp.events.Add('hide_ui', () => {
+    ui.hidden = true;
+});
+
 jcmp.events.AddRemoteCallable('CommandList', cmds => {
     jcmp.ui.CallEvent('CommandList', cmds);
 });

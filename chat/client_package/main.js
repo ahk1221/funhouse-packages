@@ -6,6 +6,10 @@ ui.autoResize = true;
 // Gets overridden by the server anyway
 let MAX_MESSAGE_LENGTH = 1024;
 
+jcmp.events.Add('hide_ui', () => {
+    ui.hidden = true;
+});
+
 jcmp.events.AddRemoteCallable('chat_message', (msg, r, g, b) => {
   jcmp.ui.CallEvent('chat_message', msg, r, g, b);
 });

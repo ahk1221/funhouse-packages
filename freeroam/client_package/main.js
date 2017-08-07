@@ -54,6 +54,10 @@ const healthBarBackPos = new Vector3f(-(healthBarSize.x / 2), -277, 0.05);
 const healthBarShadowSize = new Vector2f(400, 20);
 const healthBarShadowPos = new Vector3f(-(healthBarShadowSize.x / 2), -280, 0.1);
 
+jcmp.events.Add('hide_ui', () => {
+    ui.hidden = true;
+});
+
 function hex2rgba(colour) {
     colour = colour.replace('#', '');
 

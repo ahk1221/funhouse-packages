@@ -64,14 +64,6 @@ jcmp.events.Add("PlayerReady", (player) => {
     jcmp.events.CallRemote('freeroam_set_weather', player, freeroam.config.world.weather);
     freeroam.timeManager.updatePlayer(player);
     player.Respawn();
-
-    if (freeroam.bans.has(player.client.steamId)) {
-        freeroam.chat.send(player, 'You are banned from the server until the next server restart. You will get kicked shortly.', freeroam.config.colours.red);
-            const done = freeroam.workarounds.watchPlayer(player, setTimeout(() => {
-            done();
-            player.Kick('banned');
-        }, 15000));
-    }
 });
 
 jcmp.events.Add("PlayerDeath", (player, killer, reason) => {

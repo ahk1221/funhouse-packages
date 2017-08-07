@@ -23,26 +23,6 @@ module.exports = ({ Command, manager }) => {
         });
     }))
 
-    .add(new Command('ban')
-      .parameter('target', 'string', 'networkId or (part of) name')
-      .optional('reason', 'string', 'reason', { isTextParameter: true })
-      .description('bans a player until the next restart')
-      .handler((player, target, reason) => {
-        if (!freeroam.utils.isAdmin(player)) {
-          freeroam.chat.send(player, 'you are not allowed to use this command', freeroam.config.colours.red)
-          return;
-        }
-        const res = freeroam.utils.getPlayer(target);
-        if (res.length === 0 || res.length > 1) {
-          freeroam.chat.send(player, 'no / too many matching players!', freeroam.config.colours.red);
-          return;
-        }
-
-        freeroam.chat.broadcast(`${player.escapedNametagName} banned ${res[0].escapedNametagName} until the next server restart.` + (reason.length > 0 ? ` Reason: ${reason}` : ''), freeroam.config.colours.orange);
-        freeroam.bans.add(res[0].client.steamId);
-        freeroam.workarounds.watchPlayer(res[0], setTimeout(() => res[0].Kick(reason), 5000));
-    }))
-
     .add(new Command('admintpall')
       .description('teleports all players to your position')
       .handler((player, target, reason) => {

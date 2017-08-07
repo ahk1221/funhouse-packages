@@ -6,9 +6,6 @@ jcmp.events.AddRemoteCallable('spawnmenu/remote/spawnVehicle', (player, modelhas
     }
 
     const vehicle = new Vehicle(modelhash, player.aimPosition, player.rotation);
-    if(player.freeroam.passiveMode === true) {
-        jcmp.events.Call('passive_vehicles_spawned', vehicle);
-    }
     jcmp.events.Call('spawnmenu/local/vehicleSpawned', player, vehicle);
 });
 

@@ -11,6 +11,10 @@ const nitrousEnabledDefault = false;
 const turboJumpEnabledDefault = false;
 const vehicleMenuCompactModeDefault = true;
 
+jcmp.events.Add('hide_ui', () => {
+    ui.hidden = true;
+});
+
 jcmp.ui.AddEvent('spawnmenu/ui/toggleMenu', toggle => {
     if (toggle && jcmp.localPlayer.controlsEnabled) {
         jcmp.localPlayer.controlsEnabled = false;
@@ -46,9 +50,9 @@ function loadSettings() {
     if (!jcmp.settings.Exists(vehicleMenuCompactModeSetting))
         jcmp.settings.Set(vehicleMenuCompactModeSetting, vehicleMenuCompactModeDefault);
 
-    const nitrousEnabled = jcmp.settings.Get(nitrousEnabledSetting);
-    const turboJumpEnabled = jcmp.settings.Get(turboJumpEnabledSetting);
-    const vehicleMenuCompactMode = jcmp.settings.Get(vehicleMenuCompactModeSetting);
+    let nitrousEnabled = jcmp.settings.Get(nitrousEnabledSetting);
+    let turboJumpEnabled = jcmp.settings.Get(turboJumpEnabledSetting);
+    let vehicleMenuCompactMode = jcmp.settings.Get(vehicleMenuCompactModeSetting);
 
     // add some checks just incase someone tries messing with the jcmp.settings.
     if (typeof nitrousEnabled !== 'boolean') {

@@ -6,6 +6,10 @@ ui.autoResize = true;
 var isPlayerInVehicle = false;
 var config;
 
+jcmp.events.Add('hide_ui', () => {
+    ui.hidden = true;
+});
+
 jcmp.events.CallRemote('send_file_radio');
 
 jcmp.events.AddRemoteCallable('recieve_file_radio', (file) => {

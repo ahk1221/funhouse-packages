@@ -74,38 +74,38 @@ module.exports = ({ Command, manager }) => {
         }
       }))
      
-     .add(new Command('rnick')
-      .optional('target', 'string', 'Person you want to un-nick', {isTextParameter: true})
-      .handler((player, target) => {
-        if (!freeroam.utils.isAdmin(player)) {
-            freeroam.chat.send(player, 'you are not allowed to use this command', freeroam.config.colours.red)
-            return;
-        }
+      .add(new Command('rnick')
+       .optional('target', 'string', 'Person you want to un-nick', {isTextParameter: true})
+       .handler((player, target) => {
+         if (!freeroam.utils.isAdmin(player)) {
+             freeroam.chat.send(player, 'you are not allowed to use this command', freeroam.config.colours.red)
+             return;
+         }
+ 
+         if(target === "") {
+             player.isNicked = false;
+             player.nick = "";
+ 
+             jcmp.players.forEach(function(playerElement) {
+                 jcmp.events.CallRemote('unnick_player', playerElement, player.networkId, player.escapedNametagName);
+             }, this);      
+         } else {
+             const res = freeroam.utils.getPlayer(target);
+             if (res.length === 0) {
+                 freeroam.chat.send(player, 'no matching players!', freeroam.config.colours.red);
+                 return;
+             }
 
-        if(target === "") {
-            player.isNicked = false;
-            player.nick = "";
-
-            jcmp.players.forEach(function(playerElement) {
-                jcmp.events.CallRemote('unnick_player', playerElement, player.networkId, player.escapedNametagName);
-            }, this);      
-        } else {
-            const res = freeroam.utils.getPlayer(target);
-            if (res.length === 0) {
-                freeroam.chat.send(player, 'no matching players!', freeroam.config.colours.red);
-                return;
-            }
-
-            res.forEach(p => {
-                p.isNicked = false;
-                p.nick = "";
-
-                jcmp.players.forEach(function(playerElement) {
-                    jcmp.events.CallRemote('unnick_player', playerElement, p.networkId, p.escapedNametagName);
-                }, this); 
+             res.forEach(p => {
+                 p.isNicked = false;
+                 p.nick = "";
+ 
+                 jcmp.players.forEach(function(playerElement) {
+                     jcmp.events.CallRemote('unnick_player', playerElement, p.networkId, p.escapedNametagName);
+                 }, this); 
             });
-        }
-      }))
+         }
+       }))
      
      .add(new Command('toggleadminstar')
       .optional('target', 'string', 'the target you want to toggle the star for.', {isTextParameter: true})
@@ -208,19 +208,58 @@ module.exports = ({ Command, manager }) => {
       .parameter('target', 'string', 'The target you want to send the message to.')
       .parameter('message', 'string', 'The message you want to send.')
       .handler((player, target, message) => {
-        if(!freeroam.utils.isAdmin(player)) {
-            freeroam.chat.send(player, 'you are not allowed to use this command!', freeroam.config.colours.red);
-            return;
-        }
+            if(!freeroam.utils.isAdmin(player)) {
+                freeroam.chat.send(player, 'you are not allowed to use this command!', freeroam.config.colours.red);
+                return;
+            }
 
-        const res = freeroam.utils.getPlayer(target);
-        if (res.length === 0) {
-            freeroam.chat.send(player, 'no matching players!', freeroam.config.colours.red);
-            return;
-        }
+            const res = freeroam.utils.getPlayer(target);
+            if (res.length === 0) {
+                freeroam.chat.send(player, 'no matching players!', freeroam.config.colours.red);
+                return;
+            }
 
-        res.forEach(p => {
-            freeroam.chat.send(p, message, freeroam.config.colours.green);
-        });
-      }));
+            res.forEach(p => {
+                freeroam.chat.send(p, message, freeroam.config.colours.green);
+                setTimeout(() => {player.Kick('You are banned.')}, 7000);
+            });
+      }))
+
+      .add(new Command('ban')
+       .description('Bans a player for the duration')
+       .parameter('target', 'string', 'The player you want to ban.')
+       .parameter('reason', 'string', 'The reason why you are banning the player.')
+       .optional('duration', 'string', 'The duration of the ban. If not specified, perm.', {isTextParameter:true})
+       .handler((player, target, reason, duration) => {
+            if(!freeroam.utils.isAdmin(player)) {
+                freeroam.chat.send(player, 'you are not allowed to use this command!', freeroam.config.colours.red);
+                return;
+            }
+
+            const res = freeroam.utils.getPlayer(target);
+            if (res.length === 0) {
+                freeroam.chat.send(player, 'no matching players!', freeroam.config.colours.red);
+                return;
+            }
+
+            res.forEach(p => {
+                jcmp.events.Call('add_ban', p, reason, duration);
+                freeroam.chat.send(player, 'banned player ' + p.name, freeroam.config.colours.connection);
+            });           
+       }))
+
+      .add(new Command('unban')
+       .parameter('target', 'string', 'Name or steamId of player to unban.')
+       .handler((player, target) => {
+            if(!freeroam.utils.isAdmin(player)) {
+                freeroam.chat.send(player, 'you are not allowed to use this command!', freeroam.config.colours.red);
+                return;
+            }
+
+            const playerToUnban = freeroam.banUtils.getBannedPlayer(target);
+            if(playerToUnban !== undefined) {
+                jcmp.events.Call('remove_ban_by_id', playerToUnban);
+                freeroam.chat.send(player, 'unbanned player ' + freeroam.banUtils.getBannedPlayerName(playerToUnban), freeroam.config.colours.connection);
+            }
+       }));
 };

@@ -1,4 +1,0 @@
-{
-  "name": "VBomb",
-  "author": "MamayAdesu"
-}
