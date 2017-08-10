@@ -4,6 +4,10 @@
         "name": "Radio Off"
     },
 	{
+		"src": "http://icecast-qmusic.cdp.triple-it.nl/Qmusic_nl_live_64.ogg",
+		"name": "Q-music NL"
+    },
+	{
 		"src": "http://stream.radioreklama.bg/radio1.ogg",
 		"name": "Radio Revolution 01"
     }

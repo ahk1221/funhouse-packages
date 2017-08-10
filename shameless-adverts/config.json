@@ -8,15 +8,19 @@
         "color": "green"
     },
     {
-        "message": "Press INS for an altitude meter",
+        "message": "Press DEL while in a vehicle to plant a bomb",
         "color": "green"
     },
+    {
+        "message": "Press END while looking at a vehicle to defuse a bomb",
+        "color": "green"
+    },
+	{
+	    "message": "Press "," or "." while in a vehicle to switch radio stations,",
+        "color": "green"
+	},
     {
         "message": "Join us on discord: https://discord.gg/pxzKzvy",
-        "color": "green"
-    },
-    {
-        "message": "Press , or . while in a vehicle to change radio stations",
         "color": "green"
     }
 	
