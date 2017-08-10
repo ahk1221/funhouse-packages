@@ -10,6 +10,10 @@
 const ui = new WebUIWindow('jc3mp-servernews', 'package://jc3mp-servernews/ui/index.html', new Vector2(jcmp.viewportSize.x, jcmp.viewportSize.y));
 ui.autoResize = true;
 
+jcmp.events.Add('hide_ui', () => {
+    ui.hidden = true;
+});
+
 //request config from the server
 jcmp.ui.AddEvent("requestservernewsconfig", () => {
 	jcmp.events.CallRemote("requestservernewsconfig");
