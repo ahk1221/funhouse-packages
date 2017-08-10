@@ -18,8 +18,19 @@ jcmp.events.Add('chat_message', (player, message) => {
     }
     var returnMessage = `${player.adminStar ? '<div class="admin-logo"></div>' : ''}[${player.freeroam.colour}] ${nametag}[#FFFFFF]: ${message}`;
     if(freeroam.muteUtils.isPlayerMuted(player)) {
-        returnMessage = '';
-        freeroam.chat.send(player, 'you are muted from this chat!', freeroam.config.colours.red);
+        var unmuteDate = freeroam.muteUtils.getUnmuteDate(player.client.steamId);
+        if(unmuteDate === 'perm') {
+            returnMessage = '';
+            freeroam.chat.send(player, 'you are muted from this chat!', freeroam.config.colours.red);
+        } else {
+            var today = new Date();
+            if(today > unmuteDate) {
+                jcmp.events.Call('remove_mute_by_id', player.client.steamId);
+            } else {
+                returnMessage = '';
+                freeroam.chat.send(player, 'you are muted from this chat!', freeroam.config.colours.red); 
+            }
+        }
     }
 
     if(returnMessage !== '')

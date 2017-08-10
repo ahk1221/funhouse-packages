@@ -10,11 +10,30 @@ fs.readFile(path.join(__dirname, 'mutelist.json'), 'utf8', (err, data) => {
 });
 
 module.exports = class MuteUtils {
-    static isSteamIdMuted(steamId) {
+    static getUnmuteDate(steamId) {
         fs.readFile(path.join(__dirname, "mutelist.json"), 'utf8', (err, data) => {
             if(err) throw err;
             config = JSON.parse(data);
         });
+
+        var unmuteDate;
+
+        config.forEach((element) => {
+            if(element.steamId === steamId) {
+                if(element.unmuteDate === "perm") {
+                    unmuteDate = 'perm';
+                }
+                else {
+                    unmuteDate = Date.parse(element.unmuteDate);
+                }         
+            }
+        }, this);
+
+        return unmuteDate;
+    }
+
+    static isSteamIdMuted(steamId) {
+
 
         var muted = false;
         config.forEach((element) => {

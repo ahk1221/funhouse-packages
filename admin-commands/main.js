@@ -21,7 +21,7 @@ var path = require('path');
 
 jcmp.events.Add('add_mute', (player, reason, duration, adminWhoIsMuting) => {
     if(freeroam.muteUtils.isPlayerMuted(player)) {
-        freeroam.chat.send(adminWhoIsBanning, 'this player is already muted!', freeroam.config.colours.red);
+        freeroam.chat.send(adminWhoIsMuting, 'this player is already muted!', freeroam.config.colours.red);
         return;
     }
 
