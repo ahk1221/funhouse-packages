@@ -127,7 +127,8 @@ module.exports = class BanUtility {
                 if(name === idOrName.toLowerCase())
                     steamIdToReturn = element.steamId;
                 else {
-                    var isNameContained = element.playerName.indexOf(idOrName) !== -1;
+                    var lowerCaseIdOrName = idOrName.toLowerCase();
+                    var isNameContained = element.playerName.toLowerCase().indexOf(lowerCaseIdOrName) !== -1;
                     if(isNameContained) {
                         steamIdToReturn = element.steamId;
                     }

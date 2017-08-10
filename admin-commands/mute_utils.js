@@ -57,7 +57,8 @@ module.exports = class MuteUtils {
                 if(name === idOrName.toLowerCase())
                     steamId = element.steamId;
                 else {
-                    var isNameContained = element.playerName.indexOf(idOrName) !== -1;
+                    var lowerCaseIdOrName = idOrName.toLowerCase();
+                    var isNameContained = element.playerName.toLowerCase().indexOf(lowerCaseIdOrName) !== -1;
                     if(isNameContained) {
                         steamId = element.steamId;
                     }
