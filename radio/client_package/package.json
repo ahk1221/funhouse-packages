@@ -6,6 +6,7 @@
   "author": "AHK1221",
   "license": "MIT",
   "websites": [
-      "stream.radioreklama.bg"
+      "stream.radioreklama.bg",
+	  "icecast-qmusic.cdp.triple-it.nl"
   ]
 }
