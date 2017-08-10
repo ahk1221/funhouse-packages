@@ -1,0 +1,35 @@
+{
+	"topper": "<h4>Welcome to [EU] NLFunHouse</h4>",
+	"newsitems":[
+		{
+			"title": "Welcome",
+			"mediatype": "image",
+			"mediauri": "media/welcome.jpg",
+			"text": "Welcome to [EU] NLFunHouse the server where it is all about fun!"
+		},
+		{
+			"title": "Rules",
+			"mediatype": "image",
+			"mediauri": "media/rules.jpg",
+			"text": "It's very important to have fun in this server! And respect each other."
+		},
+		{
+			"title": "Features",
+			"mediatype": "image",
+			"mediauri": "media/features.jpg",
+			"text": "Server Features: Radio, infinite wingsuit, altitude meter & spawn menu's"
+		},
+		{
+			"title": "Discord",
+			"mediatype": "image",
+			"mediauri": "media/discord.jpg",
+			"text": "Join us on discord: https://discord.gg/pxzKzvy"
+		},		
+		{
+			"title": "Staff",
+			"mediatype": "image",
+			"mediauri": "media/staff.jpg",
+			"text": "Owner: Remie aka Shallow Water.nl Moderators: xRef, AHK1221 & Dark Lord"
+		}
+	]
+}

@@ -1,0 +1,23 @@
+[
+    {
+        "message": "Press V for the vehicles menu",
+        "color": "green"
+    },
+    {
+        "message": "Press M for the weapons menu",
+        "color": "green"
+    },
+    {
+        "message": "Press INS for an altitude meter",
+        "color": "green"
+    },
+    {
+        "message": "Join us on discord: https://discord.gg/pxzKzvy",
+        "color": "green"
+    },
+    {
+        "message": "Press , or . while in a vehicle to change radio stations",
+        "color": "green"
+    }
+	
+]
