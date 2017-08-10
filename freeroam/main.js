@@ -1,12 +1,12 @@
 'use strict';
 
-console.log('killed player' + 'some st');
-
 global.freeroam = {
     commands: jcmp.events.Call('get_command_manager')[0],
     chat: jcmp.events.Call('get_chat')[0],
     config: require('./gm/config'),
     utils: require('./gm/utility'),
+    banUtils: require('../admin-commands/ban_utils'),
+    muteUtils: require('../admin-commands/mute_utils'),
     colours: require('./vendor/randomColor'),
     workarounds: require('./gm/_workarounds'),
     bans: new Set(),

@@ -6,6 +6,7 @@ global.freeroam = {
     config: require('../freeroam/gm/config'),
     utils: require('../freeroam/gm/utility'),
     banUtils: require('./ban_utils'),
+    muteUtils: require('./mute_utils'),
     colours: require('../freeroam/vendor/randomColor'),
     workarounds: require('../freeroam/gm/_workarounds'),
     bans: new Set(),
@@ -17,23 +18,34 @@ global.freeroam = {
 
 var fs = require('fs');
 var path = require('path');
-let config;
-fs.readFile(path.join(__dirname, "banlist.json"), 'utf8', (err, data) => {
-    if(err) throw err;
-    config = JSON.parse(data);
-});
 
-jcmp.events.Add('add_ban', (player, reason, duration) => {
-    if(freeroam.banUtils.isPlayerBanned(player)) {
-        console.log('dud');
+jcmp.events.Add('add_mute', (player, reason, duration, adminWhoIsMuting) => {
+    if(freeroam.muteUtils.isPlayerMuted(player)) {
+        freeroam.chat.send(adminWhoIsBanning, 'this player is already muted!', freeroam.config.colours.red);
         return;
     }
 
-    freeroam.banUtils.banPlayer(player, reason, duration);
+    freeroam.muteUtils.mutePlayer(player, reason, duration, adminWhoIsMuting);
+});
+
+jcmp.events.Add('add_ban', (player, reason, duration, adminWhoIsBanning) => {
+    if(freeroam.banUtils.isPlayerBanned(player)) {
+        freeroam.chat.send(adminWhoIsBanning, 'this player is already banned!', freeroam.config.colours.red);
+        return;
+    }
+
+    freeroam.banUtils.banPlayer(player, reason, duration, adminWhoIsBanning);
 
     setTimeout(() => {player.Kick('banned')}, 5000);
+});
 
-    console.log(JSON.stringify(config));
+jcmp.events.Add('remove_mute_by_id', (steamId) => {
+    var isMuted = freeroam.muteUtils.isSteamIdMuted(steamId);
+    if(!isMuted) {
+        return;
+    }
+
+    freeroam.muteUtils.unmutePlayer(steamId);
 });
 
 jcmp.events.Add('remove_ban_by_id', (steamId) => {
@@ -53,10 +65,5 @@ jcmp.events.Add('remove_ban', (player) => {
     freeroam.banUtils.unbanPlayer(player.client.steamId);  
 });
 
-jcmp.events.AddRemoteCallable('chat_ready', player => {
-    freeroam.chat.send(player, 'Spawning might take a while. Please wait and enjoy the view.', freeroam.config.colours.purple);
-
-    freeroam.banUtils.whenPlayerJoined(player);
-});
-
+freeroam.utils.loadFilesFromDirectory(`${__dirname}/events`);
 freeroam.commands.loadFromDirectory(`${__dirname}/commands`, (f, ...a) => require(f)(...a));

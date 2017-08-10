@@ -243,7 +243,11 @@ module.exports = ({ Command, manager }) => {
             }
 
             res.forEach(p => {
-                jcmp.events.Call('add_ban', p, reason, duration);
+                if(freeroam.utils.isAdmin(p) && p.networkId !== player.networkId){
+                    freeroam.chat.send(player, 'you are not allowed to ban another admin!', freeroam.config.colours.red);
+                    return;
+                }
+                jcmp.events.Call('add_ban', p, reason, duration, player);
                 freeroam.chat.send(player, 'banned player ' + p.name, freeroam.config.colours.connection);
             });           
        }))
@@ -260,6 +264,47 @@ module.exports = ({ Command, manager }) => {
             if(playerToUnban !== undefined) {
                 jcmp.events.Call('remove_ban_by_id', playerToUnban);
                 freeroam.chat.send(player, 'unbanned player ' + freeroam.banUtils.getBannedPlayerName(playerToUnban), freeroam.config.colours.connection);
+            }
+       }))
+    
+      .add(new Command('mute')
+       .parameter('target', 'string', 'Name or steamId of player to mute.')
+       .parameter('reason', 'string', 'Reason why you are muting this player.')
+       .optional('duration', 'string', 'The duration of the mute. If not specified, will perm mute.', {isTextParameter: true})
+       .handler((player, target, reason, duration) => {
+            if(!freeroam.utils.isAdmin(player)) {
+                freeroam.chat.send(player, 'you are not allowed to use this command!', freeroam.config.colours.red);
+                return;
+            }
+
+            const res = freeroam.utils.getPlayer(target);
+            if(res.length === 0){
+                freeroam.chat.send(player, 'no matching players!', freeroam.config.colours.red);
+                return;
+            }
+
+            res.forEach(p => {
+                if(freeroam.utils.isAdmin(p) && p.networkId !== player.networkId) {
+                    freeroam.chat.send(player, 'you are not allowed to mute another admin!', freeroam.config.colours.red);
+                    return;
+                }
+
+                jcmp.events.Call('add_mute', p, reason, duration, player);
+            });
+       }))
+
+      .add(new Command('unmute')
+       .parameter('target', 'string', 'Name or steamId of player to unmute.')
+       .handler((player, target) => {
+            if(!freeroam.utils.isAdmin(player)) {
+                freeroam.chat.send(player, 'you are not allowed to use this command!', freeroam.config.colours.red);
+                return;
+            }
+            
+            const playerToUnmute = freeroam.muteUtils.getMutedPlayer(target);
+            if(playerToUnmute !== undefined) {
+                jcmp.events.Call('remove_mute_by_id', playerToUnmute);
+                freeroam.chat.send(player, 'unmuted player ' + freeroam.muteUtils.getMutedPlayerName(playerToUnmute), freeroam.config.colours.connection);
             }
        }));
 };

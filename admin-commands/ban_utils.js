@@ -40,7 +40,7 @@ module.exports = class BanUtility {
         return valueToReturn;
     }
 
-    static banPlayer(player, reason, duration) {
+    static banPlayer(player, reason, duration, adminWhoIsBanning) {
         var UnbanDate = new Date();
         if(duration === "") {
             UnbanDate = "perm";
@@ -60,6 +60,11 @@ module.exports = class BanUtility {
                 case "d":
                 var banDuration = duration.substring(0, duration.length-1);
                 UnbanDate.setDate(UnbanDate.getDate() + parseInt(banDuration));
+                break;
+
+                default:
+                freeroam.chat.send(adminWhoIsBanning, "Please enter a correct duration!", freeroam.config.colours.connection);
+                return;
                 break;
             }
         }

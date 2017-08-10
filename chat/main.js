@@ -23,9 +23,10 @@ jcmp.events.AddRemoteCallable('chat_submit_message', (player, message) => {
 
   if (retnString.length > 0) {
     jcmp.events.CallRemote('chat_message', null, retnString);
-  } else {
-    jcmp.events.CallRemote('chat_message', null, message);
-  }
+  } 
+  //else {
+  //  jcmp.events.CallRemote('chat_message', null, message);
+  //}
 });
 
 let customCSS = '';
