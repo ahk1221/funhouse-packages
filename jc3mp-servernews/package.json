@@ -1,0 +1,17 @@
+{
+    "authors": [
+        {
+            "email": "lukas.berwanger@googlemail.com",
+            "name": "Lukas 'derbl4ck' Berwanger",
+            "url": "https://derbl4ck.com"
+        },
+        {
+            "email": "quentin.freire@gmail.com",
+            "name": "Myami",
+            "url": "http://jc3battleroyale.com/"
+        }
+    ],
+    "jcmp_dependencies": [],
+    "name": "jc3mp-servernews",
+    "version": "1.0.1"
+}

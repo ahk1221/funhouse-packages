@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <title>JC3:MP ServerNews</title>
+    <link rel='stylesheet' href='bootstrap.min.css'>
+    <style>
+      /* cyrillic-ext */
+      @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Open Sans'), local('OpenSans'), url(K88pR3goAWT7BTt32Z01mxJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+        unicode-range: U+0460-052F, U+20B4, U+2DE0-2DFF, U+A640-A69F;
+      }
+      /* cyrillic */
+      @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Open Sans'), local('OpenSans'), url(RjgO7rYTmqiVp7vzi-Q5URJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+        unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+      }
+      /* greek-ext */
+      @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Open Sans'), local('OpenSans'), url(LWCjsQkB6EMdfHrEVqA1KRJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+        unicode-range: U+1F00-1FFF;
+      }
+      /* greek */
+      @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Open Sans'), local('OpenSans'), url(xozscpT2726on7jbcb_pAhJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+        unicode-range: U+0370-03FF;
+      }
+      /* vietnamese */
+      @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Open Sans'), local('OpenSans'), url(59ZRklaO5bWGqF5A9baEERJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+        unicode-range: U+0102-0103, U+1EA0-1EF9, U+20AB;
+      }
+      /* latin-ext */
+      @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Open Sans'), local('OpenSans'), url(u-WUoqrET9fUeobQW7jkRRJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+        unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+      }
+      /* latin */
+      @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Open Sans'), local('OpenSans'), url(cJZKeOuBrn4kERxqtaUH3VtXRa8TVwTICgirnJhmVJw.woff2) format('woff2');
+        unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+      }
+    </style>
+    <script src='jquery-1.9.1.min.js'></script>
+    <script src='bootstrap.min.js'></script>
+	<script type="text/javascript" src="script.js"></script>
+	<script>getconfig();</script>
+    <style>
+      body {
+        margin: 0px;
+        background-color: rgba(0, 0, 0, 0);
+        font-family: 'Open Sans', sans-serif;
+      }
+      a, a:hover, a:visited, a:active, a:focus {
+        color: #FF9800;
+        text-decoration: none;
+      }
+      .container {
+        padding-top: 15%;
+      }
+      #newsSlider .carousel-caption {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        text-align: left;
+        padding: 10px;
+        background: #1f1f1f;
+        text-shadow: none;
+      }
+      #newsSlider .list-group {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding-right: 0px;
+      }
+      #newsSlider .list-group-item {
+        border-radius: 0px;
+        cursor: pointer;
+        background-color: #1f1f1f;
+        border: 1px solid #2f2f2f;
+        color: #fff;
+      }
+      #newsSlider .list-group .active {
+        background-color: #333333;
+      }
+      @media (min-width: 600px) {
+        #newsSlider { padding-right:33.3333%; }
+        #newsSlider .carousel-controls { display:none; }
+      }
+      @media (max-width: 400px) {
+        .carousel-caption p,
+        #newsSlider .list-group { display:none; }
+      }
+      .btn-primary {
+        background-color: #FF9800;
+        border-color: #e48b07;
+        border-radius: 0px;
+        width: 100%;
+        height: 100px;
+        -webkit-transition: all 0.3s ease-out 0s;
+           -moz-transition: all 0.3s ease-out 0s;
+            -ms-transition: all 0.3s ease-out 0s;
+             -o-transition: all 0.3s ease-out 0s;
+                transition: all 0.3s ease-out 0s;
+      }
+      .btn-primary:hover, .btn-primary:visited, .btn-primary:active, .btn-primary:focus {
+        background-color: #ffa200 !important;
+        border-color: #e48b07 !important;
+        font-size: 16px;
+      }
+	  .topper {
+	color:#fff;
+	background-color: #FF9800;
+        border-color: #e48b07;
+        border-radius: 0px;
+	        width: 100%;
+        height: 40px;
+		 line-height: 40px;
+		text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+
+	}
+    </style>
+  </head>
+  <body id='page'>
+    <div class='container'>
+	 <!-- Wrapper for topper - this is filled from config.json by script.js -->
+	<div id='topper' class='topper'>loading....</div>
+        <div id='newsSlider' class='carousel slide' data-ride='carousel'>
+
+          <!-- Wrapper for slides - this is filled from config.json by script.js -->
+          <div class='carousel-inner' id = 'newsfeatures'> 
+			loading....
+          </div><!-- End Carousel Inner - this is filled from config.json by script.js -->
+
+          <ul class='list-group col-sm-4' id='headlines'>
+            loading....
+          </ul>
+
+        </div><!-- End Carousel -->
+    </div>
+  </body>
+</html>
