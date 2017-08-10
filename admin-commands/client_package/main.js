@@ -55,15 +55,3 @@ jcmp.events.Add('Render', renderer => {
             drawText(renderer, timeTillUnban, new Vector3f(renderer.viewportSize.x / 2, renderer.viewportSize.y / 2, 0), fontSize, "Impact");
     }
 });
-
-jcmp.ui.AddEvent('get_key_press_radio', keyCode => {
-    if(keyCode === "46") {
-        jcmp.localPlayer.camera.attachedToPlayer = !jcmp.localPlayer.camera.attachedToPlayer;
-
-        jcmp.localPlayer.camera.position = new Vector3f(3503, 1236, 1646);
-        jcmp.localPlayer.camera.rotation = new Vector3f(0.23, -0.01, 0);
-        jcmp.events.Call('hide_ui');
-
-        shouldShowBanScreen = !jcmp.localPlayer.camera.attachedToPlayer;
-    }
-});
