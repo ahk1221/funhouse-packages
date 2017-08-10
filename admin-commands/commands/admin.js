@@ -228,9 +228,9 @@ module.exports = ({ Command, manager }) => {
       .add(new Command('ban')
        .description('Bans a player for the duration')
        .parameter('target', 'string', 'The player you want to ban.')
-       .parameter('reason', 'string', 'The reason why you are banning the player.')
-       .optional('duration', 'string', 'The duration of the ban. If not specified, perm.', {isTextParameter:true})
-       .handler((player, target, reason, duration) => {
+       .parameter('duration', 'string', 'The duration of the ban. Input perm for permanent ban.')
+       .optional('reason', 'string', 'The reason why you are banning the player.', {isTextParameter: true})
+       .handler((player, target, duration, reason) => {
             if(!freeroam.utils.isAdmin(player)) {
                 freeroam.chat.send(player, 'you are not allowed to use this command!', freeroam.config.colours.red);
                 return;
@@ -269,9 +269,9 @@ module.exports = ({ Command, manager }) => {
     
       .add(new Command('mute')
        .parameter('target', 'string', 'Name or steamId of player to mute.')
-       .parameter('reason', 'string', 'Reason why you are muting this player.')
-       .optional('duration', 'string', 'The duration of the mute. If not specified, will perm mute.', {isTextParameter: true})
-       .handler((player, target, reason, duration) => {
+       .parameter('duration', 'string', 'The duration of the mute. For permenant mute input perm')
+       .optional('reason', 'string', 'Reason why you are muting this player.', {isTextParameter: true})
+       .handler((player, target, duration, reason) => {
             if(!freeroam.utils.isAdmin(player)) {
                 freeroam.chat.send(player, 'you are not allowed to use this command!', freeroam.config.colours.red);
                 return;

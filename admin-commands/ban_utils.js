@@ -91,17 +91,24 @@ module.exports = class BanUtility {
         } else {
             var minutes = UnbanDate.getMinutes() - today.getMinutes();
             timeTillUnban = "YOU WILL BE UNBANNED IN " + minutes + " MINUTES.";
-            if(minutes > 60) {
+            if(minutes === 0) {
                 var hours = UnbanDate.getHours() - today.getHours();
                 timeTillUnban = "YOU WILL BE UNBANNED IN " + hours + " HOURS.";
-                if(hours > 24) {
+                if(hours === 0) {
                     var days = UnbanDate.getDate() - today.getDate();
                     timeTillUnban = "YOU WILL BE UNBANNED IN " + days + " DAYS.";
                 }
             }
         }
 
-        jcmp.events.CallRemote('show_ban_screen', player, timeTillUnban, reason);
+        console.log(timeTillUnban);
+
+        var reasonToSend;
+        if(reason === '') 
+            reasonToSend = undefined;
+        else
+            reasonToSend = reason;
+        jcmp.events.CallRemote('show_ban_screen', player, timeTillUnban, reasonToSend);
     }
 
     static unbanPlayer(steamId) {

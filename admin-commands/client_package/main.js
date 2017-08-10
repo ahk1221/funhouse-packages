@@ -47,9 +47,11 @@ jcmp.events.Add('Render', renderer => {
         var fontSize = Math.round(renderer.viewportSize.x / 28); 
         drawText(renderer, banText, new Vector3f(renderer.viewportSize.x / 2, renderer.viewportSize.y / 9.14, 0), fontSize, "Impact");
 
-        drawText(renderer, "BAN REASON:", new Vector3f(renderer.viewportSize.x / 2, renderer.viewportSize.y / 5.2, 0), fontSize, "Impact");
+        if(reasonText !== undefined) {
+            drawText(renderer, "BAN REASON:", new Vector3f(renderer.viewportSize.x / 2, renderer.viewportSize.y / 5.2, 0), fontSize, "Impact");
 
-        drawText(renderer, reasonText.toUpperCase(), new Vector3f(renderer.viewportSize.x / 2, renderer.viewportSize.y / 3.5, 0), fontSize, "Impact");
+            drawText(renderer, reasonText.toUpperCase(), new Vector3f(renderer.viewportSize.x / 2, renderer.viewportSize.y / 3.5, 0), fontSize, "Impact");
+        }
 
         if(timeTillUnban !== undefined)
             drawText(renderer, timeTillUnban, new Vector3f(renderer.viewportSize.x / 2, renderer.viewportSize.y / 2, 0), fontSize, "Impact");
