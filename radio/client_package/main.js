@@ -18,7 +18,8 @@ jcmp.events.AddRemoteCallable('recieve_file_radio', (file) => {
 
 jcmp.events.AddRemoteCallable('set_player_in_vehicle_radio', (toggle) => {
     isPlayerInVehicle = toggle;
-    jcmp.ui.CallEvent('toggle_radio_img', toggle);
+    var toggleToDo;
+    jcmp.ui.CallEvent('toggle_radio_img', false);
     
     //if(toggle == true) {
     //    jcmp.ui.CallEvent('do_fade_out');
