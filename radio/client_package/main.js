@@ -21,6 +21,7 @@ jcmp.events.AddRemoteCallable('set_player_in_vehicle_radio', (toggle) => {
     jcmp.ui.CallEvent('toggle_radio_img', toggle);
     
     if(toggle == true) {
+        
         jcmp.ui.CallEvent('do_fade_out');
     }
     
