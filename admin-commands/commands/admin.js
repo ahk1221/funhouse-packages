@@ -1,6 +1,30 @@
 'use strict';
 module.exports = ({ Command, manager }) => {
     manager.category('admin', 'only usable by admins')
+
+      .add(new Command('kill')
+       .parameter('target', 'string', 'Target you want to kill.')
+       .handler((player, target) => {
+            if (!freeroam.utils.isAdmin(player)) {
+                freeroam.chat.send(player, 'you are not allowed to use this command', freeroam.config.colours.red)
+                return;
+            }
+        
+            const res = freeroam.utils.getPlayer(target);
+            if (res.length === 0) {
+                freeroam.chat.send(player, 'no matching players!', freeroam.config.colours.red);
+                return;
+            }
+
+            res.forEach(p => {
+                if(freeroam.utils.isAdmin(p)) {
+                    freeroam.chat.send(player, 'you can not kill an admin!', freeroam.config.colours.red);
+                    return;
+                }
+                p.health = 0;
+            });
+       }))
+
       .add(new Command('pineapple')
         .description('Pineapples are good for you!')
         .handler((player) => {
