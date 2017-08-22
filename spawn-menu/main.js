@@ -6,12 +6,13 @@ jcmp.events.AddRemoteCallable('spawnmenu/remote/spawnVehicle', (player, modelhas
     }
 
     const vehicle = new Vehicle(modelhash, player.aimPosition, player.rotation);
+    vehicle.dimension = player.dimension;
     jcmp.events.Call('spawnmenu/local/vehicleSpawned', player, vehicle);
 });
 
 jcmp.events.AddRemoteCallable('spawnmenu/remote/spawnWeapon', (player, modelhash) => {
     if (jcmp.events.Call('spawnmenu/local/spawnWeapon', player, modelhash).filter(r => r === false).length > 0) {
-        return;
+        return; 
     }
 
     player.GiveWeapon(modelhash, 398, true);

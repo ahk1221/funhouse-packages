@@ -6,5 +6,10 @@ module.exports = ({ Command, manager }) => {
        .parameter('dimension', 'number', 'the dimension lololollol')
        .handler((player, dimension) => {
             player.dimension = dimension;
+       }))
+
+      .add(new Command('creatCheckpoint')
+       .handler((player) => {
+            jcmp.events.CallRemote('create_checkpoint', player);
        }));
 };

@@ -1,0 +1,295 @@
+{
+    "checkpoints": [
+        {
+            "positionX": -13178,
+            "positionY": 1026.6,
+            "positionZ": 14837,
+
+            "rotationX": 0,
+            "rotationY": 1.756,
+            "rotationZ": 0
+        },
+        {
+            "positionX": -12987,
+            "positionY": 1034.3,
+            "positionZ": 14839,
+
+            "rotationX": 0,
+            "rotationY": 1.5714,
+            "rotationZ": 0 
+        },
+        {
+            "positionX": -12828,
+            "positionY": 1063.1,
+            "positionZ": 14834,
+
+            "rotationX": 0,
+            "rotationY": 1.546,
+            "rotationZ": 0 
+        },
+        {
+            "positionX": -12729,
+            "positionY": 1087,
+            "positionZ": 14907,
+
+            "rotationX": 0,
+            "rotationY": -2.9,
+            "rotationZ": 0 
+        },
+        {
+            "positionX": -12786,
+            "positionY": 1104.1,
+            "positionZ": 14990,
+
+            "rotationX": 0,
+            "rotationY": -2.26,
+            "rotationZ": 0 
+        },
+        {
+            "positionX": -12878,
+            "positionY": 1130.1,
+            "positionZ": 15087,
+
+            "rotationX": 0,
+            "rotationY": -2.25,
+            "rotationZ": 0 
+        },
+        {
+            "positionX": -12987,
+            "positionY": 1159.1,
+            "positionZ": 15145,
+
+            "rotationX": 0,
+            "rotationY": -1.57,
+            "rotationZ": 0 
+        },
+        {
+            "positionX": -13148,
+            "positionY": 1199.1,
+            "positionZ": 15133,
+
+            "rotationX": 0,
+            "rotationY": -1.25,
+            "rotationZ": 0 
+        },
+        {
+            "positionX": -13232,
+            "positionY": 1219.1,
+            "positionZ": 15144,
+
+            "rotationX": 0,
+            "rotationY": -1.74,
+            "rotationZ": 0 
+        },
+        {
+            "positionX": -13370,
+            "positionY": 1233.7,
+            "positionZ": 15161,
+
+            "rotationX": 0,
+            "rotationY": -1.49,
+            "rotationZ": 0 
+        },
+        {
+            "positionX": -13585,
+            "positionY": 1234.1,
+            "positionZ": 15060,
+
+            "rotationX": 0,
+            "rotationY": -0.88,
+            "rotationZ": 0 
+        },
+        {
+            "positionX": -13675,
+            "positionY": 1218.1,
+            "positionZ": 14973,
+
+            "rotationX": 0,
+            "rotationY": -0.63,
+            "rotationZ": 0 
+        },
+        {
+            "positionX": -13764,
+            "positionY": 1207.1,
+            "positionZ": 14794,
+
+            "rotationX": 0,
+            "rotationY": -0.16,
+            "rotationZ": 0 
+        },
+        {
+            "positionX": -13773.7,
+            "positionY": 1205.1,
+            "positionZ": 14625,
+
+            "rotationX": 0,
+            "rotationY": 0.044,
+            "rotationZ": 0 
+        },
+        {
+            "positionX": -13739,
+            "positionY": 1186.1,
+            "positionZ": 14462,
+
+            "rotationX": 0,
+            "rotationY": 0.500,
+            "rotationZ": 0 
+        },
+        {
+            "positionX": -13586,
+            "positionY": 1180.1,
+            "positionZ": 14270,
+
+            "rotationX": 0,
+            "rotationY": 1.29,
+            "rotationZ": 0 
+        },
+        {
+            "positionX": -13469,
+            "positionY": 1195.1,
+            "positionZ": 14231,
+
+            "rotationX": 0,
+            "rotationY": 1.17,
+            "rotationZ": 0 
+        },
+        {
+            "positionX": -13240,
+            "positionY": 1176.1,
+            "positionZ": 14134,
+
+            "rotationX": 0,
+            "rotationY": 1.40,
+            "rotationZ": 0 
+        },
+        {
+            "positionX": -12939,
+            "positionY": 1082.1,
+            "positionZ": 14006,
+            
+            "rotationX": 0,
+            "rotationY": -1.19,
+            "rotationZ": 0 
+        },
+        {
+            "positionX": -13114,
+            "positionY": 1065.1,
+            "positionZ": 13952,
+
+            "rotationX": 0,
+            "rotationY": -2,
+            "rotationZ": 0 
+        },
+        {
+            "positionX": -13324,
+            "positionY": 1053.1,
+            "positionZ": 14022,
+
+            "rotationX": 0,
+            "rotationY": -2.34,
+            "rotationZ": 0 
+        },
+        {
+            "positionX": -13442,
+            "positionY": 1040.1,
+            "positionZ": 14043,
+
+            "rotationX": 0,
+            "rotationY": -0.92,
+            "rotationZ": 0 
+        },
+        {
+            "positionX": -13606,
+            "positionY": 1028.1,
+            "positionZ": 13954,
+
+            "rotationX": 0,
+            "rotationY": -1.66,
+            "rotationZ": 0 
+        },
+        {
+            "positionX": -13728,
+            "positionY": 1028.1,
+            "positionZ": 14034,
+
+            "rotationX": 0,
+            "rotationY": -2.61,
+            "rotationZ": 0 
+        },
+        {
+            "positionX": -13680,
+            "positionY": 1026.1,
+            "positionZ": 14584,
+
+            "rotationX": 0,
+            "rotationY": 1.635,
+            "rotationZ": 0 
+        },
+        {
+            "positionX": -13506,
+            "positionY": 1026.1,
+            "positionZ": 14626,
+
+            "rotationX": 0,
+            "rotationY": 2.26,
+            "rotationZ": 0 
+        },
+        {
+            "positionX": -13360,
+            "positionY": 1026.1,
+            "positionZ": 14749,
+
+            "rotationX": 0,
+            "rotationY": 2.167,
+            "rotationZ": 0 
+        }
+    ],
+
+    "lobby_spawn_location": {
+        "positionX": -13338,
+        "positionY": 1026.6,
+        "positionZ": 14784
+    },
+
+    "min_players": 1,
+
+    "spawn_locations": [
+        {
+            "positionX": -13312.8,
+            "positionY": 1026.6,
+            "positionZ": 14778,
+
+            "rotationX": -0.023,
+            "rotationY": 2.132,
+            "rotationZ": 0.008
+        },
+        {
+            "positionX": -13334.1,
+            "positionY": 1026.6,
+            "positionZ": 14771.5,
+
+            "rotationX": -0.01,
+            "rotationY": 2.155, 
+            "rotationZ": -0.004
+        },
+        {
+            "positionX": -13336.6,
+            "positionY": 1026.7,
+            "positionZ": 14761,
+            
+            "rotationX": -0.022,
+            "rotationY": 2.163,
+            "rotationZ": 0.007
+        }
+    ],
+
+    "startlocation": {
+        "positionX": -13323.5,
+        "positionY": 1026,
+        "positionZ": 14774,
+
+        "rotationX": 0,
+        "rotationY": 2.122,
+        "rotationZ": 0
+    }
+}
