@@ -25,14 +25,13 @@ jcmp.events.AddRemoteCallable('create_checkpoint', () => {
 
 function createCheckpoint() {
     var newIndex = currentCheckpointId + 3;
-    if(newIndex > currentMap.checkpoints.length) {
-        newIndex -= 1;
-        if(newIndex > currentMap.checkpoints.length) {
-            newIndex -= 1; 
-            if(newIndex > currentMap.checkpoints.length) {
-                newIndex -= 1;
-            }
-        }
+
+    while(newIndex > currentMap.checkpoints.length) {
+        newIndex -=1;
+    }
+
+    if(checkpoints.length === currentMap.checkpoints.length) {
+        return;
     }
 
     if(newIndex > currentCheckpointId) {
@@ -53,7 +52,7 @@ jcmp.events.Add('CheckpointEnter', checkpoint => {
         destroyCheckpoint(checkpoint.id);
         currentCheckpointId++;
 
-        if(checkpoint.id === currentMap.checkpoints.length - 1) {
+        if(currentCheckpointId === currentMap.checkpoints.length) {
             jcmp.events.CallRemote('send_message_radio', 'Entered last checkpoint!');
             jcmp.events.CallRemote('race/last-checkpoint-entered');
         }
@@ -87,6 +86,8 @@ function destroyCheckpoint(id) {
 jcmp.events.AddRemoteCallable('handle_checkpoints', data => {
     currentMap = JSON.parse(data);
 
+    jcmp.events.CallRemote('send_message_radio', 'Amount of checkpoints + ' + currentMap.checkpoints.length);
+
     for (var i = 0; i < 3; i++) {
         var element = currentMap.checkpoints[i];
         var checkpoint = new CustomCheckpoint(new Vector3f(element.positionX, element.positionY, element.positionZ), new Vector3f(element.rotationX, element.rotationY, element.rotationZ));     
@@ -100,6 +101,8 @@ jcmp.events.AddRemoteCallable('race/remove_checkpoints', () => {
         element.Destroy();
     }, this);
     currentMap = undefined;
+    checkpoints = undefined;
+    currentCheckpointId = undefined;
 });
 
 jcmp.events.AddRemoteCallable('freeze_player', () => {
