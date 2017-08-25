@@ -244,7 +244,6 @@ module.exports = ({ Command, manager }) => {
 
             res.forEach(p => {
                 freeroam.chat.send(p, message, freeroam.config.colours.green);
-                setTimeout(() => {player.Kick('You are banned.')}, 7000);
             });
       }))
 
